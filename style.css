@@ -1,0 +1,35 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.day-container {
+    display: flex;
+}
+
+.day {
+    display:flex;
+    flex-direction: column;
+}
+
+.weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.weekday{
+    width: 200px;  
+    height: 25px;  
+    background-color:  #62A6CE;  
+    margin: 8px;
+    padding: 5px;
+    color: white;
+}
+.summary {
+    flex-direction: column;
+}
+
+p {
+    font-size: small;
+}
+
