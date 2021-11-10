@@ -33,3 +33,8 @@ p {
     font-size: small;
 }
 
+img {
+    object-fit: cover;
+    size: 30%
+}
+
