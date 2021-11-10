@@ -35,6 +35,7 @@ p {
 
 img {
     object-fit: cover;
-    size: 30%
+    width: 80px;
+    height: 50px;
 }
 
