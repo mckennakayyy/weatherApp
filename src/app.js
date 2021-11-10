@@ -104,7 +104,7 @@ function forecastHtml(date, day, idx) {
     return `
     <h3 class="weekday">${daysOfTheWeek(date)[idx]}:</h3>
     <div class="weather">
-        <img src=\"img/${day.icon}.png\">
+        <img src=\"${day.icon}.png\">
         <div>
             <p>${trimWords(day.summary)}</p>
             <p><strong>${Math.round(day.temperatureHigh)}&deg</strong> / ${Math.round(day.temperatureLow)}&deg F</p>
