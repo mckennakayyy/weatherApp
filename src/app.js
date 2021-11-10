@@ -99,7 +99,6 @@ function daysOfTheWeek(date) {
     return ['Today', tomorrow, nextDay]
 };
 
-//can't get image to render, path changes when bundled with parcel
 function forecastHtml(date, day, idx) {
     return `
     <h3 class="weekday">${daysOfTheWeek(date)[idx]}:</h3>
