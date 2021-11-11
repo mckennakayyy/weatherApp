@@ -13,7 +13,7 @@ form.addEventListener('submit', e => {
     //fetch current date
     const dateObj = new Date();
     //format date
-    const todaysDate= dateObj.toJSON().slice(0, 10).replace(/-/g, '/');
+    const todaysDate = dateObj.toJSON().slice(0, 10).replace(/-/g, '/');
   
     //fetch latitude and longitude
     const geolocationUrl = `https://se-weather-api.herokuapp.com/api/v1/geo?zip_code=${inputVal}`;
