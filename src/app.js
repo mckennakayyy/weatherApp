@@ -11,9 +11,9 @@ form.addEventListener('submit', e => {
     let coordinates = {};
     let city = '';
     //fetch current date
-    const todaysDate = new Date();
+    const dateObj = new Date();
     //format date
-    const utc = todaysDate.toJSON().slice(0, 10).replace(/-/g, '/');
+    const todaysDate= dateObj.toJSON().slice(0, 10).replace(/-/g, '/');
   
     //fetch latitude and longitude
     const geolocationUrl = `https://se-weather-api.herokuapp.com/api/v1/geo?zip_code=${inputVal}`;
@@ -28,10 +28,10 @@ form.addEventListener('submit', e => {
             
             //check that lat & long are populated
             if (latitude !== undefined && longitude !== undefined) {
-                getWeatherData(latitude, longitude, utc)
+                getWeatherData(latitude, longitude, todaysDate)
                     .then(weatherData => {
                         const dayArr = weatherData.daily.data.slice(0, 3);
-                        createForecast(dayArr, city, todaysDate)
+                        createForecast(dayArr, city, dateObj)
                     })
             } else {
                 throw new Error()
@@ -48,8 +48,8 @@ form.addEventListener('submit', e => {
 });
 
 //data being returned does not change, issue with external weather API? City and coordinates seem to be changing as expected. Tested in the browser and was getting same information returned even when manually changing the lat/long
-function getWeatherData(latitude, longitude, utc) {
-    const weatherUrl = `https://se-weather-api.herokuapp.com/api/v1/forecast?latitude=${latitude}&longitude=${longitude}&date=${formatDate(utc)}`
+function getWeatherData(latitude, longitude, todaysDate) {
+    const weatherUrl = `https://se-weather-api.herokuapp.com/api/v1/forecast?latitude=${latitude}&longitude=${longitude}&date=${formatDate(todaysDate)}`
     return fetch(weatherUrl)
         .then(response => response.json())
         .then(data => {
@@ -76,7 +76,6 @@ function createForecast(arr, str, date) {
 function trimWords(string) {
     return string.split(' ').slice(0, 2).join(' ');
 };
-
 
 function formatDate(date) {
     let year = date.slice(0, 4);
@@ -109,7 +108,7 @@ function forecastHtml(date, day, idx) {
             <p><strong>${Math.round(day.temperatureHigh)}&deg</strong> / ${Math.round(day.temperatureLow)}&deg F</p>
         </div>
     </div>`
-}
+};
 
 
 
